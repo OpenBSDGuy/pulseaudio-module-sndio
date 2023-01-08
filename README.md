@@ -9,7 +9,7 @@ This module supports playback only.
 
 ## Installation on Debian
 
-First install the depedencies:
+First install the dependencies:
 
 ```bash
 $ sudo apt install pulseaudio pulsemixer build-essential libpulse-dev libtool libltdl-dev libsndio-dev
