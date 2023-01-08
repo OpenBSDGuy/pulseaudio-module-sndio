@@ -7,19 +7,52 @@ http://cvsweb.openbsd.org/cgi-bin/cvsweb/ports/audio/pulseaudio/files/
 
 This module supports playback only.
 
-## Setup
+## Installation on Debian
 
-Load it via `/etc/pulse/default.pa` (Linux) or `/usr/local/etc/pulse/default.pa` (FreeBSD):
-```
-load-module module-sndio device=snd@thor/0
-```
+First install the depedencies:
 
-It's best to disable the `suspend-on-idle` module, so comment or remove the following line from `default.pa`:
-```
-load-module module-suspend-on-idle
+```bash
+$ sudo apt install pulseaudio pulsemixer build-essential libpulse-dev libtool libltdl-dev libsndio-dev
 ```
 
-Also set the default sink if you want:
+Reboot the computer,
+
+```bash
+$ sudo reboot
 ```
-set-default-sink sndio-sink
+
+Compile the code,
+
+```bash
+$ make && sudo make install
 ```
+
+Then load the sndio module and set the server,
+
+```bash
+$ pactl load-module module-sndio device="snd@100.64.1.2/0" record=false playback=true
+```
+
+Make it permanent,
+
+```bash
+# echo 'pactl load-module module-sndio device="snd@100.64.1.2/0" record=false playback=true' >> /etc/profile
+```
+
+
+~~## Setup~~
+
+~~Load it via `/etc/pulse/default.pa` (Linux) or `/usr/local/etc/pulse/default.pa` (FreeBSD):~~
+~~```~~
+~~load-module module-sndio device=snd@thor/0~~
+~~```~~
+
+~~It's best to disable the `suspend-on-idle` module, so comment or remove the following line from `default.pa`:~~
+~~```~~
+~~load-module module-suspend-on-idle~~
+~~```~~
+
+~~Also set the default sink if you want:~~
+~~```~~
+~~set-default-sink sndio-sink~~
+~~```~~
