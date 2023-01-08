@@ -21,6 +21,12 @@ Reboot the computer,
 $ sudo reboot
 ```
 
+Then get the latest release of the repo,
+
+```bash
+$ wget 'https://github.com/OpenBSDGuy/pulseaudio-module-sndio/archive/refs/tags/v14.tar.gz' && tar -xvzf v14.tar.gz && cd pulseaudio-module-sndio-14
+```
+
 Compile the code,
 
 ```bash
