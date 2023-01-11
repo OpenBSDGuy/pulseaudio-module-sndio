@@ -39,12 +39,11 @@ Then load the sndio module and set the server,
 $ pactl load-module module-sndio device="snd@100.64.1.2/0" record=false playback=true
 ```
 
-Make it permanent,
+Make it permanent by adding the following line to the `/etc/pulse/default.pa` file,
 
 ```bash
-# echo 'pactl load-module module-sndio device="snd@100.64.1.2/0" record=false playback=true' >> /etc/profile
+load-module module-sndio device="snd@100.64.1.2/0" record=false playback=true
 ```
-
 
 ~~## Setup~~
 
