@@ -45,6 +45,8 @@ Make it permanent by adding the following line to the `/etc/pulse/default.pa` fi
 load-module module-sndio device="snd@100.64.1.2/0" record=false playback=true
 ```
 
+The IP must point to the IP address of the VMM host machine in NAT set up (Networking option-2 on [FAQ16](https://www.openbsd.org/faq/faq16.html#VMMnet), which in this case is the OpenBSD machine.
+
 ~~## Setup~~
 
 ~~Load it via `/etc/pulse/default.pa` (Linux) or `/usr/local/etc/pulse/default.pa` (FreeBSD):~~
