@@ -47,19 +47,14 @@ load-module module-sndio device="snd@100.64.1.2/0" record=false playback=true
 
 The IP must point to the IP address of the VMM host machine in NAT set up (Networking option-2 on [FAQ16](https://www.openbsd.org/faq/faq16.html#VMMnet), which in this case is the OpenBSD machine.
 
-~~## Setup~~
+It's best to disable the `suspend-on-idle` module, so comment or remove the following line from `/etc/pulse/default.pa`:
 
-~~Load it via `/etc/pulse/default.pa` (Linux) or `/usr/local/etc/pulse/default.pa` (FreeBSD):~~
-~~```~~
-~~load-module module-sndio device=snd@thor/0~~
-~~```~~
+```bash
+load-module module-suspend-on-idle
+```
 
-~~It's best to disable the `suspend-on-idle` module, so comment or remove the following line from `default.pa`:~~
-~~```~~
-~~load-module module-suspend-on-idle~~
-~~```~~
+Lastly, set the default sink in the `/etc/pulse/default.pa` file:
 
-~~Also set the default sink if you want:~~
-~~```~~
-~~set-default-sink sndio-sink~~
-~~```~~
+```bash
+set-default-sink sndio-sink
+```
